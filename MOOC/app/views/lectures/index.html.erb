@@ -15,6 +15,10 @@
 
   <tbody>
     <% @lectures.each do |lecture| %>
+    <h4><%= link_to lecture.content, lecture %><br>
+      Submitted <%= time_ago_in_words(lecture.created_at) %>
+      by <%= lecture.user_id %>
+    </h4>
       <tr>
         <td><%= lecture.attachment %></td>
         <td><%= lecture.content %></td>
@@ -24,6 +28,15 @@
         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <%= link_to like_lecture_path(lecture), method: :put do %>
+        Upvote
+        <%= lecture.get_upvotes.size %>
+      <% end %>
+
+      <%= link_to dislike_lecture_path(lecture), method: :put do %>
+        Downvote
+        <%= lecture.get_downvotes.size %>
+      <% end %>
     <% end %>
   </tbody>
 </table>

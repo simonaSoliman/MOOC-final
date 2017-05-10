@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :lectures
+  resources :lectures do
+    member do
+      put "like", to: "lectures#upvote"
+      put "dislike", to: "lectures#downvote"
+    end
+  end
   resources :courses
   devise_for :users, controllers: { sessions: 'users/sessions' }
   # The priority is based upon order of creation: first created -> highest priority.
