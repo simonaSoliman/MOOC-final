@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  attachment: MyText
+  content: MyText
+  user_id: 
+  course_id: 
+
+two:
+  attachment: MyText
+  content: MyText
+  user_id: 
+  course_id: 
