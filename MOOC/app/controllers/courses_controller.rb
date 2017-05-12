@@ -10,10 +10,12 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    @lectures=Lecture.where(Course_id: @course).order("created_at DESC")
   end
 
   # GET /courses/new
   def new
+    @lecture = Lecture.new
     @course = Course.new
   end
 

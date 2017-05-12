@@ -9,5 +9,11 @@
   <strong>User:</strong>
   <%= @course.user %>
 </p>
+<% @lectures.each do |lecture| %>
+   <br>
+<%= link_to lecture.content, lecture ,{ :class=>"panel panel-denger" }%>
+<% end %>
+<!-- will be tested -->
+
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
