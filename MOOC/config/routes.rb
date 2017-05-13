@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     member do
       put "like", to: "lectures#upvote"
       put "dislike", to: "lectures#downvote"
+      put :add_to_fav
+      put :delete_from_fav
     end
   	resources :comments
   end

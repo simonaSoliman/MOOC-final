@@ -36,7 +36,8 @@ class LecturesController < ApplicationController
   # POST /lectures.json
   def create
     @lecture = Lecture.new(lecture_params)
-
+    @lecture.user_id= current_user.id
+    # @lecture.course_id =(ezai b2a a3ml save ll course id)
     respond_to do |format|
       if @lecture.save
         format.html { redirect_to @lecture, notice: 'Lecture was successfully created.' }
@@ -84,6 +85,18 @@ class LecturesController < ApplicationController
     redirect_to :back
   end
 
+  def add_to_spam
+    current_user.lectures << @lecture
+    current_user.save
+
+    redirect_to lectures_path
+  end
+  def delete_from_spam
+    current_user.lectures.delete(@lecture)
+    current_user.save
+
+    redirect_to lectures_path
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lecture

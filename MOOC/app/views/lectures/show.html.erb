@@ -17,7 +17,8 @@
 
 <p>
   <strong>Course:</strong>
-  <%= @lecture.course %>
+  <%= @lecture.course_id %>
+
 </p>
 <%= render 'comments/showallcom' %>
 <%= link_to 'Edit', edit_lecture_path(@lecture) %> |

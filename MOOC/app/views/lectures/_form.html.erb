@@ -22,7 +22,7 @@
   <div class="field">
     <%= f.label :user_id %><br>
     <%= current_user.try(:email) %>
-    <%= f.text_field :user_id %>
+    <!-- <%= f.text_field :user_id %> -->
   <div class="field">
     <%= f.label :course_id %><br>
     <%= f.collection_select :course_id, Course.all, :id, :title %>

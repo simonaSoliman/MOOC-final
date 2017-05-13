@@ -1,4 +1,5 @@
-<%= form_for([@post, @lecture.comments.build]) do |f| %>
+<%= form_for([@lecture, @lecture.comments.build]) do |f| %>
   <%= f.text_area :content %>
   <%= f.submit %>
+  <%= puts 'inform'%>
 <% end %>

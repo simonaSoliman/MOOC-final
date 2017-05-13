@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512191909) do
+ActiveRecord::Schema.define(version: 20170513010554) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -44,6 +44,11 @@ ActiveRecord::Schema.define(version: 20170512191909) do
 
   add_index "lectures", ["course_id"], name: "index_lectures_on_course_id"
   add_index "lectures", ["user_id"], name: "index_lectures_on_user_id"
+
+  create_table "lectures_user", force: :cascade do |t|
+    t.integer "lecture_id"
+    t.integer "user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

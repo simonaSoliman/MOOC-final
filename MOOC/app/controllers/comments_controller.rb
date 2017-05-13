@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy, :find_lec_id]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy, :find_lec_id, :create]
 
   # GET /comments
   # GET /comments.json
@@ -27,11 +27,11 @@ class CommentsController < ApplicationController
   def create
     # @comment = Comment.new(comment_params)
     @comment = @lecture.comments.create(params[:comment].permit(:content))
-    @comment.user_id = current_user.idea
+    @comment.user_id = current_user.id
     @comment.save
 
     if @comment.save
-      redirect_to post_path(@post)
+      redirect_to lecture_path(@post)
     else
       render 'new'
     end
@@ -73,13 +73,18 @@ class CommentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
+      puts @lecture
       @comment = Comment.find(params[:id])
     end
     def find_lec_id
       @lecture=Lecture.find(params(:lecture_id));
+      puts 'habllllll'
+
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:content, :user_id, :lecture_id)
+      puts "de al lecture id"
+      puts :lecture_id
     end
 end
