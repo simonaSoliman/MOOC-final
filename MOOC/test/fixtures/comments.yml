@@ -3,9 +3,9 @@
 one:
   content: MyText
   user_id: 
-  course_id: 
+  lecture_id: 
 
 two:
   content: MyText
   user_id: 
-  course_id: 
+  lecture_id: 

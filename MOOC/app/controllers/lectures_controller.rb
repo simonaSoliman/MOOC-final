@@ -10,6 +10,17 @@ class LecturesController < ApplicationController
   # GET /lectures/1
   # GET /lectures/1.json
   def show
+    @comments = Comment.where(lecture_id: @lecture).order("created_at DESC")
+    # You can set the variable in the if-clause
+    # And you also need to use static finders with a hash as an argument in Rails4
+    # if (@user = User.find_by(name: params[:id]))
+    #    @comments = @comments.lecture_id.all
+      #  @logs = @user.logs.all
+    # You don't need to call render explicitly
+    # if you render the view with the same name as the action
+    #  else
+    #    render file: 'public/404', status: 404, formats: [html]
+    #  end
   end
 
   # GET /lectures/new

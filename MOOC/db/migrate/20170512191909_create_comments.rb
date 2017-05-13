@@ -3,9 +3,10 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.text :content
       t.references :user, index: true, foreign_key: true
-      t.references :course, index: true, foreign_key: true
+      t.references :lecture, index: true, foreign_key: true
 
       t.timestamps null: false
     end
   end
+  
 end
