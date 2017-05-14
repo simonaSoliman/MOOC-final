@@ -13,8 +13,19 @@
 
   <div class="field">
     <%= f.label :attachment %><br>
-    <%= f.text_area :attachment %>
+    <%= f.file_field :attachment %>
   </div>
+
+  <div class="field">
+    <%= f.label :attachment %><br>
+    <%= f.file_field :attachment %>
+    <% if f.object.attachment? %>
+      <%= file_tag f.object.attachment.thumb.url %>
+      <%= f.label :remove_file %>
+      <%= f.check_box :remove_file %> 
+    <% end %>
+  </div>
+
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_area :content %>

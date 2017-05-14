@@ -1,4 +1,5 @@
 class Lecture < ActiveRecord::Base
+  mount_uploader :attachment, AttachmentUploader
   belongs_to :user
   belongs_to :course
   acts_as_votable
