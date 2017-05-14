@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy, :find_lec_id, :create]
+  before_action :find_lec_id
+  before_action :authenticate_user!
 
   # GET /comments
   # GET /comments.json
@@ -10,7 +11,6 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
-
   end
 
   # GET /comments/new
@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     @comment.save
 
     if @comment.save
-      redirect_to lecture_path(@post)
+      redirect_to @lecture
     else
       render 'new'
     end
@@ -77,7 +77,7 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
     end
     def find_lec_id
-      @lecture=Lecture.find(params(:lecture_id));
+      @lecture=Lecture.find(params[:lecture_id]);
       puts 'habllllll'
 
     end

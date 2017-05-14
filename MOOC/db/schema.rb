@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514072703) do
+ActiveRecord::Schema.define(version: 20170514140439) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -37,6 +37,11 @@ ActiveRecord::Schema.define(version: 20170514072703) do
 #   undefined method `[]' for nil:NilClass
 
   create_table "lectures_user", force: :cascade do |t|
+    t.integer "lecture_id"
+    t.integer "user_id"
+  end
+
+  create_table "lectures_users", force: :cascade do |t|
     t.integer "lecture_id"
     t.integer "user_id"
   end

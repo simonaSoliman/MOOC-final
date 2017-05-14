@@ -38,8 +38,21 @@
         <%= lecture.get_downvotes.size %>
       <% end %>
 
-      
 
+      <% if current_user %>
+              <% unless current_user.lectures.include?(lecture) %>
+              <td>
+                <%= link_to 'Mark as Spam', add_to_spam_lecture_path(lecture), method: :put %>
+              </td>
+              <% end %>
+            <% end %>
+            <% if current_user %>
+              <% if current_user.lectures.include?(lecture) %>
+              <td>
+                <%= link_to 'unSpam', delete_from_spam_lecture_path(lecture), method: :put %>
+              </td>
+              <% end %>
+            <% end %>
 
     <% end %>
   </tbody>
