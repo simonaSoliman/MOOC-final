@@ -7,7 +7,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @course.user %>
+  <%= @course.try(:user).try(:name) %>
 </p>
 <% @lectures.each do |lecture| %>
    <br>
