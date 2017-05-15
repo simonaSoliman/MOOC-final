@@ -1,25 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div class="form-group">
   <strong>Attachment:</strong>
   <%= @lecture.attachment %>
-</p>
+</div>
 
-<p>
+<div class="form-group">
   <strong>Content:</strong>
   <%= @lecture.content %>
-</p>
+</div>
 
-<p>
+<div class="form-group">
   <strong>User:</strong>
   <%= @lecture.user %>
-</p>
+</div>
 
-<p>
+<div class="form-group">
   <strong>Course:</strong>
   <%= @lecture.course_id %>
 
-</p>
+</div>
 <%= render 'comments/showallcom' %>
 <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
 <%= link_to 'Back', lectures_path %>

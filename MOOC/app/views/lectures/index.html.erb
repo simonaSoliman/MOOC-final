@@ -2,7 +2,7 @@
 
 <h1>Listing Lectures</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Attachment</th>
@@ -15,10 +15,36 @@
 
   <tbody>
     <% @lectures.each do |lecture| %>
-    <h4><%= link_to lecture.content, lecture %><br>
-      Submitted <%= time_ago_in_words(lecture.created_at) %>
-      by <%= lecture.user_id %>
-    </h4>
+    <div class="content-section-a alert alert-info">
+
+        <div class="container">
+          <div class="row">
+              <div class="col-lg-5 col-sm-6">
+                <div class="clearfix"></div>
+                <h1 class="section-heading"><%= link_to lecture.content, lecture %></h1><br>
+                <p class="lead">
+                  Submitted <%= time_ago_in_words(lecture.created_at) %>
+                  by <%= lecture.user_id %>
+                </p>
+              </div>
+
+              <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <div class="btn btn-primary btn-lg" >
+                  <%= link_to like_lecture_path(lecture), method: :put do %>
+                    Upvote
+                    <%= lecture.get_upvotes.size %>
+                  <% end %>
+                </div>
+                <div class="btn btn-primary btn-lg" >
+                  <%= link_to dislike_lecture_path(lecture), method: :put do %>
+                    Downvote
+                    <%= lecture.get_downvotes.size %>
+                  <% end %>
+                </div>
+              </div>
+          </div>
+    </div>
+  </div>
       <tr>
         <td><%= lecture.attachment %></td>
         <td><%= lecture.content %></td>
@@ -28,27 +54,18 @@
         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <%= link_to like_lecture_path(lecture), method: :put do %>
-        Upvote
-        <%= lecture.get_upvotes.size %>
-      <% end %>
-
-      <%= link_to dislike_lecture_path(lecture), method: :put do %>
-        Downvote
-        <%= lecture.get_downvotes.size %>
-      <% end %>
 
 
       <% if current_user %>
               <% unless current_user.lectures.include?(lecture) %>
-              <td>
+              <td target="_blank">
                 <%= link_to 'Mark as Spam', add_to_spam_lecture_path(lecture), method: :put %>
               </td>
               <% end %>
             <% end %>
             <% if current_user %>
               <% if current_user.lectures.include?(lecture) %>
-              <td>
+              <td target="_blank">
                 <%= link_to 'unSpam', delete_from_spam_lecture_path(lecture), method: :put %>
               </td>
               <% end %>
@@ -56,7 +73,7 @@
 
     <% end %>
   </tbody>
-</table>
+</table >
 
 <br>
 

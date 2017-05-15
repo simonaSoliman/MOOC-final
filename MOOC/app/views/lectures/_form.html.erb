@@ -11,30 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :attachment %><br>
-    <%= f.file_field :attachment %>
-  </div>
+  
 
-  <div class="field">
+  <div class="field" class="form-group">
     <%= f.label :attachment %><br>
     <%= f.file_field :attachment %>
     <% if f.object.attachment? %>
       <%= file_tag f.object.attachment.thumb.url %>
       <%= f.label :remove_file %>
-      <%= f.check_box :remove_file %> 
+      <%= f.check_box :remove_file %>
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="field" class="form-group">
     <%= f.label :content %><br>
     <%= f.text_area :content %>
   </div>
-  <div class="field">
+  <div class="field" class="form-group">
     <%= f.label :user_id %><br>
     <%= current_user.try(:email) %>
     <!-- <%= f.text_field :user_id %> -->
-  <div class="field">
+  <div class="field" class="form-group">
     <%= f.label :course_id %><br>
     <%= f.collection_select :course_id, Course.all, :id, :title %>
 
